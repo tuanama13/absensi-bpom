@@ -14,6 +14,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
+
     <style>
         iframe {
             max-width: 100%;
@@ -60,27 +62,27 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="select-bagian">Pilih Bagian</label>
-                                <select class="form-control" id="select-bagian">
-                                    <option value="">KABALAI</option>
-                                    <option value="">SUB BAGIAN UMUM</option>
-                                    <option value="">SUB BAGIAN PE</option>
-                                    <option value="">BIDANG INFOKOM</option>
-                                    <option value="">SEKSI KIMIA</option>
-                                    <option value="">SEKSI MIKRO</option>
-                                    <option value="">SEKSI INSPEKSI</option>
-                                    <option value="">SEKSI SERTIFIKASI</option>
-                                    <option value="">BIDANG PENINDAKAN</option>
-                                    <option value="">HONORER</option>
-                                    <option value="">DRIVER</option>
-                                    <option value="">PRAMUBAKTI</option>
-                                    <option value="">PRAMUBAKTI 2</option>
+                                <select class="form-control" name="select-bagian" id="select-bagian">
+                                    <option value="KABALAI">KABALAI</option>
+                                    <option value="SUB BAGIAN UMUM">SUB BAGIAN UMUM</option>
+                                    <option value="SUB BAGIAN PE">SUB BAGIAN PE</option>
+                                    <option value="BIDANG INFOKOM">BIDANG INFOKOM</option>
+                                    <option value="SEKSI KIMIA">SEKSI KIMIA</option>
+                                    <option value="SEKSI MIKRO">SEKSI MIKRO</option>
+                                    <option value="SEKSI INSPEKSI">SEKSI INSPEKSI</option>
+                                    <option value="SEKSI SERTIFIKASI">SEKSI SERTIFIKASI</option>
+                                    <option value="BIDANG PENINDAKAN">BIDANG PENINDAKAN</option>
+                                    <option value="HONORER">HONORER</option>
+                                    <option value="DRIVER">DRIVER</option>
+                                    <option value="PRAMUBAKTI">PRAMUBAKTI</option>
+                                    <option value="PRAMUBAKTI 2">PRAMUBAKTI 2</option>
                                 </select>
                             </div>
                             <!-- END select Bagian -->
 
                             <div class="form-group">
                                 <label for="select-tahun">Pilih Tahun</label>
-                                <select class="form-control" id="select-tahun">
+                                <select class="form-control" name="select-tahun" id="select-tahun">
                                     <?php
                                         $tahun = 2019;
                                         for ($i=0; $i < 5; $i++) { 
@@ -98,25 +100,25 @@
 
                             <div class="form-group">
                                 <label for="select-bulan">Pilih Bulan</label>
-                                <select class="form-control" id="select-bulan">
-                                    <option value="">Januari</option>
-                                    <option value="">Februari</option>
-                                    <option value="">Maret</option>
-                                    <option value="">April</option>
-                                    <option value="">Mei</option>
-                                    <option value="">Juni</option>
-                                    <option value="">Juli</option>
-                                    <option value="">Agustus</option>
-                                    <option value="">September</option>
-                                    <option value="">Oktober</option>
-                                    <option value="">November</option>
-                                    <option value="">Desember</option>
+                                <select class="form-control" name="select-bulan" id="select-bulan">
+                                    <option value="Januari">Januari</option>
+                                    <option value="Februari">Februari</option>
+                                    <option value="Maret">Maret</option>
+                                    <option value="April">April</option>
+                                    <option value="Mei">Mei</option>
+                                    <option value="Juni">Juni</option>
+                                    <option value="Juli">Juli</option>
+                                    <option value="Agustus">Agustus</option>
+                                    <option value="September">September</option>
+                                    <option value="Oktober">Oktober</option>
+                                    <option value="November">November</option>
+                                    <option value="Desember">Desember</option>
                                 </select>
                             </div>
                             <!-- END select Bulan -->
 
                             <div class="float-right">
-                                <button class="btn btn-primary" onclick="cari()">Cari</button>
+                                <button class="btn btn-primary" onclick="caridata()">Cari</button>
                             </div>
 
                         </div>
@@ -156,8 +158,16 @@
                             <a href="file/absen1.pdf" id="embedURL">Download file</a>
                         </div> -->
 
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                    <h1 class="display-4">Aplikasi Absensi BPOM</h1>
+                                    <p class="lead">Aplikasi Pelaporan Absensi BPOM Kota Pontianak V.1</p>
+                                </div>
+                            </div>
+
                             <div id="myPDF">
-                                <a class="media" href="file/absen1.pdf"></a>
+                                <a class="media" id="media" href="file/absen1.pdf"></a>
+
                                 <!-- <a class="media {type: 'html'}" href="../">HTML File</a>  -->
                             </div>
 
@@ -173,7 +183,6 @@
     </div>
     <!-- END Container -->
 
-
     
   
 
@@ -182,27 +191,75 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="node_modules/gdocviewer/jquery.gdocsviewer.min.js"></script>
+    <!-- <script src="node_modules/gdocviewer/jquery.gdocsviewer.min.js"></script> -->
+    <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 
-    <script type="text/javascript" src="node_modules/jquery-metadata/jquery.media.js"></script> 
-    <script type="text/javascript" src="node_modules/jquery-metadata/jquery.metadata.js"></script> 
+    <script type="text/javascript" src="plugins/jquery-media/jquery.media.js"></script> 
+    <script type="text/javascript" src="plugins/jquery-metadata/jquery.metadata.js"></script> 
 
 
     <script>
-    $( document ).ready(function() {
-        document.getElementsByClassName("media")[0].style.width = "100%";
-        document.getElementsByTagName("iframe")[0].style.width = "100%";
-        // document.getElementsByTagName("iframe")[0].setAttribute("height", "100");  
-    });
-        // $(function () {
-        //     $("#myPDF").pdf({
-        //         source: "file/absen1.pdf",
-        //         // MORE SETTINGS HERE
-        //     });
-        // });
+        $( document ).ready(function() {
+            
+            // document.getElementsByTagName("iframe")[0].setAttribute("height", "100");  
+            
+        });
 
-        // $('a.media').media({width:700,height:500});
-        $('a.media').media();
+        function responsive() {
+            document.getElementsByClassName("media")[0].style.width = "100%";
+            document.getElementsByTagName("iframe")[0].style.width = "100%";
+        }
+
+        // $('a.media').media().hide();
+
+        function caridata() {
+            var bagian = $("#select-bagian").val();
+            var tahun = $("#select-tahun").val();
+            var bulan = $("#select-bulan").val();
+            
+            console.log(bagian);
+            
+
+            $.post("cari.php", {
+                    bagian: bagian,
+                    tahun:tahun,
+                    bulan:bulan
+                })
+                .done(function (data) {
+                    // $("#table").html(data);
+                    console.log(data);
+
+                    if (data !== '0') {
+                        $(".jumbotron").hide();
+                        $(".media").media().attr("href", "file/"+data);
+                        responsive();
+                    }else{
+                        // console.log("Maaf Data yang Diminta Kosong");
+                        // $("#media").media().hide();
+                        Swal.fire({
+                            title: 'Warning',
+                            text: "Maaf Data Yang Ada Minta Kosong",
+                            type: 'warning',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Oke'
+                            });
+
+                        }
+                    
+
+                    // var apa =  $('a.media').media();
+                    // console.log(apa);
+                    
+
+                    
+                    // $('a.media').media();
+
+                    
+                });
+        }
+    
+        
     </script>
 </body>
 
