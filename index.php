@@ -27,7 +27,7 @@
        
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Absensi</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
+                    <!-- </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
                     </li>
@@ -45,7 +45,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -129,7 +129,7 @@
 
                 <div class="col-12">
                     <div class="card">
-                        <h5 class="card-header">Featured</h5>
+                        <h5 class="card-header">Dokumen Pendukung</h5>
                         <div class="card-body">
                             <ul class="list-group">
                                 <li class="list-group-item"><a href="">Dokumen 1</a></li>
@@ -161,7 +161,7 @@
                             <div class="jumbotron jumbotron-fluid">
                                 <div class="container">
                                     <h1 class="display-4">Aplikasi Absensi BPOM</h1>
-                                    <p class="lead">Aplikasi Pelaporan Absensi BPOM Kota Pontianak V.1</p>
+                                    <p class="lead">Aplikasi Pelaporan Absensi BPOM Kota Pontianak v.1</p>
                                 </div>
                             </div>
 
